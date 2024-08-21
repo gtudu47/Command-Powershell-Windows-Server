@@ -71,4 +71,5 @@ Install-ADDSForest `
 -SysvolPath $SysvolPath `
 -SafeModeAdministratorPassword $SafeModeAdministratorPassword `
 -Force:$true `
+-InstallDNS
 Restart-Computer
