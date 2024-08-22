@@ -23,7 +23,7 @@ if ($LogPath -eq $null) {
     Write-Output $LogPath
 }
     #Sysvol Patch
-$SysvolPath = Read-Host "C:\Windows\SYSVOL"
+$SysvolPath = Read-Host "Sysvol Path"
 if ($SysvolPath -eq $null) {
     $SysvolPath = "C:\Windows\SYSVOL"
 } else {
@@ -39,7 +39,7 @@ if ($DomainMode -eq $null) {
     #Installation DNS
 $InstallDNS = $true
     #Mode of forest
-$ForestMode = "Default"
+$ForestMode = Read-Host "Forest Mode"
 if ($ForestMode -eq $null) {
     $ForestMode = "Default"
 } else {
@@ -70,7 +70,7 @@ Install-ADDSForest `
 -NoRebootOnCompletion:$false `
 -SysvolPath $SysvolPath `
 -SafeModeAdministratorPassword $SafeModeAdministratorPassword `
--Force:$true `
--InstallDNS
-#retart serveur
+-Force:$true 
+
+#restart server
 Restart-Computer
