@@ -8,28 +8,28 @@ $CreateDnsDelegation = $false
 $domainName = Read-Host "Domain Name"
     #Name NetBois
 $netbiosname = Read-Host "Name netbios"
-    #Patch of NT Directory Services (NTDS)
+    #Path of NT Directory Services (NTDS)
 $NTDSPath = Read-Host "Path NTDS or Defaults"
 if ($NTDSPath -eq $null) {
     $NTDSPath = "C:\Windows\NTDS"
 } else {
     Write-Output $NTDSPath
 }
-    #Patch Log
+    #Path Log
 $LogPath = Read-Host "Logs Path"
 if ($LogPath -eq $null) {
     $LogPath = "C:\Windows\NTDS"
 } else {
     Write-Output $LogPath
 }
-    #Sysvol Patch
+    #Sysvol Path
 $SysvolPath = Read-Host "Sysvol Path"
 if ($SysvolPath -eq $null) {
     $SysvolPath = "C:\Windows\SYSVOL"
 } else {
     Write-Output $SysvolPath
 }
-    #Mode du domaine
+    #Mode of domain
 $DomainMode = Read-Host "Domain mode"
 if ($DomainMode -eq $null) {
     $DomainMode = "Default"
