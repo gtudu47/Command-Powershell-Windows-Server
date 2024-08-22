@@ -23,7 +23,7 @@ if ($LogPath -eq $null) {
     Write-Output $LogPath
 }
     #Sysvol Patch
-$SysvolPath = "C:\Windows\SYSVOL"
+$SysvolPath = Read-Host "C:\Windows\SYSVOL"
 if ($SysvolPath -eq $null) {
     $SysvolPath = "C:\Windows\SYSVOL"
 } else {
@@ -72,4 +72,5 @@ Install-ADDSForest `
 -SafeModeAdministratorPassword $SafeModeAdministratorPassword `
 -Force:$true `
 -InstallDNS
+#retart serveur
 Restart-Computer
