@@ -16,7 +16,7 @@ if ($NTDSPath -eq $null) {
     Write-Output $NTDSPath
 }
     #Patch Log
-$LogPath = Read-Host "C:\Windows\NTDS"
+$LogPath = Read-Host "Logs Path"
 if ($LogPath -eq $null) {
     $LogPath = "C:\Windows\NTDS"
 } else {
@@ -58,12 +58,13 @@ Add-WindowsFeature -Name DNS -IncludeManagementTools -IncludeAllSubFeature
 Add-WindowsFeature -Name RSAT-AD-Tools -IncludeManagementTools -IncludeAllSubFeature
 
 #creation delegation
+Import-Module ADDSDeployment
 Install-ADDSForest `
 -CreateDnsDelegation $CreateDnsDelegation `
 -DomainName $DomainName `
 -DatabasePath $NTDSPath `
--DomainMode $DomainMode `
--DomainNetbiosName $NetbiosName `
+#-DomainMode $DomainMode `
+#-DomainNetbiosName $NetbiosName `
 -ForestMode $ForestMode `
 -InstallDNS:$InstallDNS `
 -LogPath $LogPath `
@@ -71,6 +72,5 @@ Install-ADDSForest `
 -SysvolPath $SysvolPath `
 -SafeModeAdministratorPassword $SafeModeAdministratorPassword `
 -Force:$true 
-
-#restart server
+Pause
 Restart-Computer
