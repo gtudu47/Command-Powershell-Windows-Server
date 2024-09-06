@@ -8,11 +8,11 @@ if ($RNewIP -eq "yes" -or $RNewIP -eq "Yes" -or $RNewIP -eq "y" -or $RNewIP -eq 
 echo "Interface Connected:"
 Get-NetAdapter
 
-#Change setting for interface network
+#Change setting for network interface
 
 #Request User
     #User Interface
-$Interface = Read-Host "Interface Name(exemple: Ethernet0)"
+$Interface = Read-Host "Interface ifIndex(Number)"
     #IP Address
 $IP = Read-Host "IP Address (format : 0.0.0.0)"
     #Prefix Length
@@ -24,15 +24,13 @@ $PrimaryDNS = Read-Host "Primary DNS Server"
 $SecondDNS  = Read-Host "Second DNS Server"
 
 #Apply Settings
-Remove-NetIPAddress -InterfaceAlias $Interface -IPAddress $IP -Confirm:$false
 New-NetIPAddress `
--InterfaceAlias $Interface `
+-InterfaceIndex $Interface `
 -IPAddress $IP `
 -PrefixLength $Prefix `
 -DefaultGateway $Gateway
 
 #Set DNS
-$InterfaceIndex = (Get-NetAdapter -Name $Interface).InterfaceIndex
 Set-DnsClientServerAddress -InterfaceIndex $Interface -ServerAddresses ($PrimaryDNS,$SecondDNS)
 Pause
 }
