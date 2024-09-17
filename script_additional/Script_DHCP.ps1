@@ -5,10 +5,11 @@ if ($RDHCP -eq "no" -or $RDHCP -eq "No" -or $RDHCP -eq "n" -or $RDHCP -eq "N") {
 # Install DHCP Service
     Install-WindowsFeature DHCP -IncludeManagementTools
 
-# Ajouter le groupe de sécurité DHCP aux administrateurs locaux
-    Add-DhcpServerSecurityGroup -ComputerName "NomDuServeurDHCP"
+# Add group security
+$hostname = HOSTNAME.EXE
+     Add-DhcpServerSecurityGroup -ComputerName $hostname
 
-# Redémarrer le service DHCP
+# Restart Service
     Restart-Service DhcpServer
 
 }
