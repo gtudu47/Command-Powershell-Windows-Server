@@ -5,7 +5,7 @@
 $RNewIP = Read-Host "Do you want to change address IP for Network (yes or No)"
 if ($RNewIP -eq "yes" -or $RNewIP -eq "Yes" -or $RNewIP -eq "y" -or $RNewIP -eq "Y") {
     #view Interface Network
-echo "Interface Connected:"
+Write-Host "Interface Connected:"
 Get-NetAdapter
 
 #Change setting for network interface
@@ -31,8 +31,7 @@ New-NetIPAddress `
 -DefaultGateway $Gateway
 
 #Set DNS
-Set-DnsClientServerAddress -InterfaceIndex $Interface -ServerAddresses ($PrimaryDNS,$SecondDNS)
-Pause
+Set-DnsClientServerAddress -InterfaceIndex $Interface -ServerAddresses ($PrimaryDNS,$SecondDNS)ye
 }
 
 # Question for Rename Server
@@ -42,6 +41,7 @@ if ($RNewName -eq "yes" -or $RNewName -eq "Yes" -or $RNewName -eq "y" -or $RNewN
     $NewName = Read-Host "New Name for server"
     Rename-Computer -NewName $NewName
     Write-Host "The computer will be renamed to $NewName after restart."
+    Restart-Computer
 }
 
 # Values enter utilisateur
@@ -118,3 +118,4 @@ Install-ADDSForest `
 
 Pause
 Restart-Computer
+
