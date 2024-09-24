@@ -36,15 +36,6 @@ while ($RNewUser -eq "yes" -or $RNewUser -eq "Yes" -or $RNewUser -eq "y" -or $RN
     $DomainNameUser = "DC=$DomainName1,DC=$DomainName2"    #assembly Domain Name
     #End Patch User
     $PatchUser = $Part2User +","+ $DomainNameUser                      #assmbly Patch OU
-
-#    Try {
-#       Get-ADOrganizationalUnit -Filter {Name -like $ParentUoUser}
-#    }
-#    Catch {
-#        Write-Host "L'OU $ParentUoUser n'existe pas. Veuillez vérifier."
-#        continue
-#    }
-
     # Create User
     New-ADUser -Name $CompleteName `
            -GivenName $FirstName `
@@ -54,7 +45,6 @@ while ($RNewUser -eq "yes" -or $RNewUser -eq "Yes" -or $RNewUser -eq "y" -or $RN
            -Enabled $true `
            -Path $PatchUser `
            -ChangePasswordAtLogon $true
-
-    Write-Host
-$RNewUser = Read-Host "do you want to create a new User (yes or no)"
+    
+    $RNewUser = Read-Host "do you want to create a new User (yes or no)"
 }
