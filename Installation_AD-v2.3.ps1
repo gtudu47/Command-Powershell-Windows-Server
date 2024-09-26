@@ -31,7 +31,7 @@ New-NetIPAddress `
 -DefaultGateway $Gateway
 
 #Set DNS
-Set-DnsClientServerAddress -InterfaceIndex $Interface -ServerAddresses ($PrimaryDNS,$SecondDNS)ye
+Set-DnsClientServerAddress -InterfaceIndex $Interface -ServerAddresses ($PrimaryDNS,$SecondDNS)
 }
 
 # Question for Rename Server
