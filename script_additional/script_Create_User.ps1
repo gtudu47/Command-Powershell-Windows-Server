@@ -1,3 +1,6 @@
+#Programm by Frereric Meunier
+#For Creation User
+
 # Import Module Active Dirctorie
 Import-Module ActiveDirectory
 
@@ -36,6 +39,7 @@ while ($RNewUser -eq "yes" -or $RNewUser -eq "Yes" -or $RNewUser -eq "y" -or $RN
     $DomainNameUser = "DC=$DomainName1,DC=$DomainName2"    #assembly Domain Name
     #End Patch User
     $PatchUser = $Part2User +","+ $DomainNameUser                      #assmbly Patch OU
+    
     # Create User
     New-ADUser -Name $CompleteName `
            -GivenName $FirstName `
@@ -45,6 +49,6 @@ while ($RNewUser -eq "yes" -or $RNewUser -eq "Yes" -or $RNewUser -eq "y" -or $RN
            -Enabled $true `
            -Path $PatchUser `
            -ChangePasswordAtLogon $true
-    
+
     $RNewUser = Read-Host "do you want to create a new User (yes or no)"
 }

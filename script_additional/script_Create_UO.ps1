@@ -19,7 +19,6 @@ while ($RNewUO -eq "yes" -or $RNewUO -eq "Yes" -or $RNewUO -eq "y" -or $RNewUO -
 
     # Create a new Organizational Unit (OU)
         New-ADOrganizationalUnit -Name $NameUO -Path $DomainNameUO
-    pause
     }elseif ($RCreateUO -eq 2) {
     # Name UO
         $NameUO = Read-Host "Name the UO"
@@ -33,7 +32,6 @@ while ($RNewUO -eq "yes" -or $RNewUO -eq "Yes" -or $RNewUO -eq "y" -or $RNewUO -
             
     # Create a new Organizational Unit (OU) inside another OU
         New-ADOrganizationalUnit -Name $NameUO -Path $PatchOU
-        pause
     }
 $RNewUO = Read-Host "do you want to create a new UO (yes or no)"
 }
