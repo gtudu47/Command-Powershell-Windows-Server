@@ -1,5 +1,5 @@
 #program by frederic meunier
-#script for user creation
+#script for change interface network
 
 #view Interface Network
 echo "Interface Connected:"
